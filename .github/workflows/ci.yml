@@ -35,3 +35,9 @@ jobs:
         with:
           name: cypress-screenshots
           path: cypress/screenshots
+          
+      - name: SonarCloud Scan
+        uses: SonarSource/sonarcloud-action@v1
+        with:
+          organization: santiago-rueda-q
+          token: ${{ secrets.SONAR_TOKEN }}
