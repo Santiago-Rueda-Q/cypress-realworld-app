@@ -1,304 +1,134 @@
-<p align="center">
-  <!-- We use two SVGs here so that this displays correctly
-    on Github. This might not look right in other Markdown previewers. -->
-  <img alt="Cypress Real World App Logo" src="./src/svgs/rwa-logo-light.svg#gh-dark-mode-only" />
-  <img alt="Cypress Real World App Logo" src="./src/svgs/rwa-logo.svg#gh-light-mode-only" />
-</p>
+### Resumen de los Pasos Realizados en el Proyecto
 
-<p align="center">
-  <a href="https://cypress.io">
-    <img width="140" alt="Cypress Logo" src="./src/svgs/built-by-cypress.svg" />
-    </a>
-</p>
+#### **Paso 1: Fork del Repositorio**
 
-<p align="center">
-   <a href="https://cloud.cypress.io/projects/7s5okt/runs">
-    <img src="https://img.shields.io/endpoint?url=https://cloud.cypress.io/badge/detailed/7s5okt/develop&style=flat&logo=cypress" />
-  </a>
+* Se comenzó con el **fork** del repositorio original **`cypress-io/cypress-realworld-app`** para tener una copia en tu cuenta de GitHub.
+* **Imagen del Repositorio**: <img width="1900" height="687" alt="image" src="https://github.com/user-attachments/assets/dbece4fe-b315-47ee-b9d1-9b36a75d4808" />
 
-  <a href="https://codecov.io/gh/cypress-io/cypress-realworld-app">
-    <img src="https://codecov.io/gh/cypress-io/cypress-realworld-app/branch/develop/graph/badge.svg" />
-  </a>
+#### **Paso 2: Clonación del Repositorio**
 
-  <a href="https://percy.io/cypress-io/cypress-realworld-app">
-    <img src="https://percy.io/static/images/percy-badge.svg" />
-  </a>
+* Después de realizar el **fork**, el siguiente paso fue clonar el repositorio a tu máquina local usando el comando `git clone`.
 
-   <a href="#contributors-">
-    <img src="https://img.shields.io/badge/all_contributors-6-green.svg?style=flat" />
-  </a>
-</p>
+  ```bash
+  git clone https://github.com/TU_USUARIO/cypress-realworld-app.git
+  ```
 
-<p align="center">
-A payment application to demonstrate <strong>real-world</strong> usage of <a href="https://cypress.io">Cypress</a> testing methods, patterns, and workflows.
-</p>
+* Esto permitió tener una copia local del repositorio para poder trabajar en él.
 
-<p align="center">
-  <img style='width: 70%' alt="Cypress Real World App" src="./public/img/rwa-readme-screenshot.png" />
-</p>
+<img width="1906" height="742" alt="image" src="https://github.com/user-attachments/assets/d5c6a783-1eb9-4b48-9739-c91ba2db3ed7" />
 
-> 💬 **Note from maintainers**
->
-> This application is purely for demonstration and educational purposes. Its setup and configuration resemble typical real-world applications, but it's not a full-fledged production system. Use this app to learn, experiment, tinker, and practice application testing with Cypress.
->
-> Happy Testing!
+#### **Paso 3: Instalación de Dependencias**
+
+* Se ejecutó `npm install --legacy-peer-deps` para instalar las dependencias necesarias para el proyecto, ya que algunas dependencias requerían versiones específicas de otros paquetes y no era posible instalarlas con `npm install` por defecto.
+
+  **Imagen de Instalación de Dependencias**:
+  ![Imagen](https://github.com/user-attachments/assets/d9ff9edd-9e14-4657-aa5a-047e414111fb)
+
+#### **Paso 4: Ejecutar Pruebas Locales**
+
+* Se ejecutaron las pruebas locales para asegurarse de que todo estuviera funcionando correctamente. Esto incluye pruebas unitarias y pruebas con **Cypress**.
+
+  **Imagen de Resultados de las Pruebas**:
+  ![Imagen](https://github.com/user-attachments/assets/d069ea76-a632-4c77-adac-db5a5015a994)
+
+#### **Paso 5: Creación del Workflow `ci.yml`**
+
+* Se creó el archivo `ci.yml` en la carpeta **`.github/workflows/`** para configurar el pipeline de **CI/CD**. Este archivo contiene los pasos necesarios para ejecutar los tests y analizar el código en **SonarCloud**.
+
+  **Imagen de Workflow `ci.yml`**:
+  ![Imagen](https://github.com/user-attachments/assets/508a3536-6ebd-4601-854f-20c31e1f2a1d)
+
+* Configuracion de `ci.yml` 
+  <img width="812" height="728" alt="image" src="https://github.com/user-attachments/assets/04a065fe-508c-4dec-96a4-4e92a61ea3fc" />
+
+#### **Paso 6: Configuración de SonarCloud en GitHub**
+
+* Se configuró **SonarCloud** en **GitHub Secrets** para que el token de **SonarCloud** estuviera disponible durante la ejecución del pipeline.
+
+  **Pasos**:
+
+  * Fuiste a **Settings → Secrets** y creaste un nuevo **secreto** llamado `SONAR_TOKEN` donde pegaste el token generado en SonarCloud.
+* Github Settings
+
+<img width="257" height="586" alt="image" src="https://github.com/user-attachments/assets/88924540-3028-4198-ac5d-092225015a8f" />
+
+* Presionar en new secrets 
+<img width="1522" height="783" alt="image" src="https://github.com/user-attachments/assets/5a48d098-19d3-429a-a8a6-b5872b761b72" />
+
+
+  **Imagen de Configuración del Secret**:
+  ![Imagen](https://github.com/user-attachments/assets/0096c3df-8eb8-4f89-a6f0-e5caf7df58c5)
+
+    **Value el Token**:
+  <img width="1041" height="548" alt="image" src="https://github.com/user-attachments/assets/96b828c7-2407-48c8-87ef-5b0d19216500" />
+
+#### **Paso 7: Generación del Token en SonarCloud**
+
+* Fuiste a **SonarCloud** para generar un nuevo token que sería usado por el pipeline de GitHub Actions. Este token se usa para autenticar las acciones y permitir que SonarCloud analice el código.
+
+  **Imagen de SonarCloud**:
+  ![Imagen](https://github.com/user-attachments/assets/e5e4f662-613c-4f59-b9f8-2a409b79f50a)
+
+  **Apartado de seguridad**:
+  <img width="1187" height="596" alt="image" src="https://github.com/user-attachments/assets/4f50c310-7093-4319-8927-882f5a7e9aed" />
+
+    **Generar Tokens**:
+    <img width="1182" height="757" alt="image" src="https://github.com/user-attachments/assets/7c2c1ca5-43cc-4f45-90a7-0ecbb96d76d8" />
+    
+#### **Paso 8: Actualización de `ci.yml` para Incluir SonarCloud**
+
+* En el archivo `ci.yml`, agregaste el paso para ejecutar el análisis en **SonarCloud** después de los tests. El token se utiliza de la siguiente manera:
+
+  ```yaml
+  - name: SonarCloud Scan
+    uses: SonarSource/sonarcloud-action@v1
+    with:
+      organization: santiago-rueda-q  # Reemplaza con tu organización en SonarCloud
+      token: ${{ secrets.SONAR_TOKEN }}
+  ```
+
+  **Imagen de Configuración de SonarCloud en `ci.yml`**:
+  ![Imagen](https://github.com/user-attachments/assets/852f281c-59dc-4d04-8eba-ce98e891c28e)
+
+#### **Paso 9: Implementación del Page Object `LoginPage.js`**
+
+* Se creó el **Page Object** en el archivo **`cypress/pages/LoginPage.js`**. Este archivo encapsula las interacciones con la página de login, lo que facilita la reutilización del código en múltiples pruebas.
+
+  **Imagen del `LoginPage.js`**:
+  ![Imagen](https://github.com/user-attachments/assets/b63617bb-785c-4359-9156-2550ffe20bbf)
+
+#### **Paso 10: Escribir el Test E2E en `custom-flow.spec.ts`**
+
+* Se escribió un **test E2E** que simula el flujo completo de un usuario, como iniciar sesión, llenar formularios y navegar por la aplicación. Este test se encuentra en el archivo **`cypress/tests/ui/custom-flow.spec.ts`**.
+
+  **Imagen del `custom-flow.spec.ts`**:
+  ![Imagen](https://github.com/user-attachments/assets/0f9de90f-bd7a-4e0b-bc29-7f6dff5c0bba)
+
+#### **Paso 11: Push de los Cambios al Repositorio**
+
+* Después de realizar todos los cambios necesarios, se hicieron **commit** y **push** de los archivos al repositorio en **GitHub**. Esto incluye los cambios en `ci.yml`, `LoginPage.js`, y el nuevo test E2E.
+
+  **Imagen del Push**:
+  ![Imagen](https://github.com/user-attachments/assets/7796148f-f4f3-44e4-94d0-cfb1914ca483)
+
+#### **Paso 12: Verificación del Pipeline en GitHub Actions**
+
+* Después de hacer **push** a los cambios, se verificó que el pipeline de **GitHub Actions** se ejecutara correctamente.
+* **Verificación en la pestaña Actions** de GitHub para asegurar que los tests y el análisis de SonarCloud se ejecutaran correctamente.
+
+  **Imagen de Actions**:
+  ![Imagen](https://github.com/user-attachments/assets/4d40a5be-00e9-4640-b24e-466389d64748)
 
 ---
 
-## Features
-
-🛠 Built with [React][reactjs], [XState][xstate], [Express][express], [lowdb][lowdb], [Material-UI][material-ui] and [TypeScript][typescript]
-⚡️ Zero database dependencies
-🚀 Full-stack [Express][express]/[React][reactjs] application with real-world features and tests
-👮‍♂️ Local Authentication
-🔥 Database Seeding with End-to-end Tests
-💻 CI/CD + [Cypress Cloud][cypresscloud]
-
-## Getting Started
-
-The Cypress Real-World App (RWA) is a full-stack Express/React application backed by a local JSON database ([lowdb]).
-
-The app is bundled with [example data](./data/database.json) (`data/database.json`) that contains everything you need to start using the app and run tests out-of-the-box.
-
-> 🚩 **Note**
->
-> You can login to the app with any of the [example app users](./data/database.json#L2). The default password for all users is `s3cret`.
-> Example users can be seen by running `yarn list:dev:users`.
-
-### Prerequisites
-
-This project requires [Node.js](https://nodejs.org/en/) to be installed on your machine. Refer to the [.node-version](./.node-version) file for the exact version.
-
-[Yarn Classic](https://classic.yarnpkg.com/) is also required. Once you have [Node.js](https://nodejs.org/en/) installed, execute the following to install the npm module [yarn](https://www.npmjs.com/package/yarn) (Classic - version 1) globally.
-
-```shell
-npm install yarn@latest -g
-```
-
-If you have Node.js' experimental [Corepack](https://nodejs.org/dist/latest/docs/api/corepack.html) feature enabled, then you should skip the step `npm install yarn@latest -g` to install Yarn Classic globally. The RWA project is locally configured for `Corepack` to use Yarn Classic (version 1).
-
-#### Yarn Modern
-
-**This project is not compatible with [Yarn Modern](https://yarnpkg.com/) (version 2 and later).**
-
-### Installation
-
-To clone the repo to your local system and install dependencies, execute the following commands:
-
-```shell
-git clone https://github.com/cypress-io/cypress-realworld-app
-cd cypress-realworld-app
-yarn
-```
-
-#### Mac users with M-series chips will need to prepend `PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true`.
-
-```shell
-PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true yarn install
-```
-
-### Run the app
-
-```shell
-yarn dev
-```
-
-> 🚩 **Note**
->
-> The app will run on port `3000` (frontend) and `3001` (API backend) by default. Please make sure there are no other applications or services running on both ports.
-> If you want to change the default ports, you can do so by modifying `PORT` and `VITE_BACKEND_PORT` variables in `.env` file.
-> However, make sure the modified port numbers in `.env` are not committed into Git since the CI environments still expect the application to run on the default ports.
-
-### Start Cypress
-
-```shell
-yarn cypress:open
-```
-
-> 🚩 **Note**
->
-> If you have changed the default ports, then you need to update Cypress configuration file (`cypress.config.ts`) locally.
-> There are three properties that you need to update in `cypress.config.ts`: `e2e.baseUrl`, `env.apiUrl`, and `env.url`.
-> The port number in `e2e.baseUrl` corresponds to `PORT` variable in `.env` file. Similarly, the port number in `env.apiUrl` and `env.url` correspond to `VITE_BACKEND_PORT`.
-> For example, if you have changed `PORT` to `13000` and `VITE_BACKEND_PORT` to `13001` in `.env` file, then your `cypress.config.ts` should look similar to the following snippet:
->
-> ```js
-> {
->   env: {
->     apiUrl: "http://localhost:13001",
->     codeCoverage: {
->       url: "http://localhost:13001/__coverage__"
->     },
->   },
->   e2e: {
->     baseUrl: "http://localhost:13000"
->   }
-> }
-> ```
->
-> Avoid committing the modified `cypress.config.ts` into Git since the CI environments still expect the application to be run on default ports.
-
-## Tests
-
-| Type      | Location                                 |
-| --------- | ---------------------------------------- |
-| api       | [cypress/tests/api](./cypress/tests/api) |
-| ui        | [cypress/tests/ui](./cypress/tests/ui)   |
-| component | [src/(next to component)](./src)         |
-| unit      | [`src/__tests__`](./src/__tests__)       |
-
-## Database
-
-- The local JSON database is located in [data/database.json](./data/database.json) and is managed with [lowdb].
-
-- The database is [reseeded](./data/database-seed.json) each time the application is started (via `yarn dev`). Database seeding is done in between each [Cypress End-to-End test](./cypress/tests).
-
-- Updates via the React frontend are sent to the [Express][express] server and handled by a set of [database utilities](backend/database.ts)
-
-- Generate a new database using `yarn db:seed`.
-
-- An [empty database seed](./data/empty-seed.json) is provided along with a script (`yarn start:empty`) to view the application without data.
-
-## Additional NPM Scripts
-
-| Script         | Description                                                                                                                                                                       |
-| -------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| dev            | Starts backend in watch mode and frontend                                                                                                                                         |
-| dev:coverage   | Starts backend in watch mode and frontend with instrumented code coverage enabled                                                                                                 |
-| dev:auth0      | Starts backend in watch mode and frontend; [Uses Auth0 for Authentication](#auth0) > [Read Guide](http://on.cypress.io/auth0)                                                     |
-| dev:okta       | Starts backend in watch mode and frontend; [Uses Okta for Authentication](#okta) > [Read Guide](http://on.cypress.io/okta)                                                        |
-| dev:cognito    | Starts backend in watch mode and frontend; [Uses Cognito for Authentication](#amazon-cognito) > [Read Guide](http://on.cypress.io/amazon-cognito)                                 |
-| dev:google     | Starts backend in watch mode and frontend; [Uses Google for Authentication](#google) > [Read Guide](https://docs.cypress.io/guides/testing-strategies/google-authentication.html) |
-| start          | Starts backend and frontend                                                                                                                                                       |
-| types          | Validates types                                                                                                                                                                   |
-| db:seed        | Generates fresh database seeds for json files in /data                                                                                                                            |
-| start:empty    | Starts backend, frontend and Cypress with empty database seed                                                                                                                     |
-| tsnode         | Customized ts-node command to get around react-scripts restrictions                                                                                                               |
-| list:dev:users | Provides id and username for users in the dev database                                                                                                                            |
-
-For a complete list of scripts see [package.json](./package.json)
-
-## Code Coverage Report
-
-The Cypress Real-World App uses the [@cypress/code-coverage](https://github.com/cypress-io/code-coverage) plugin to generate code coverage reports for the app frontend and backend.
-
-To generate a code coverage report:
-
-1. Start the development server with coverage enabled by running `yarn dev:coverage`.
-2. Run `yarn cypress:run --env coverage=true` and wait for the test run to complete.
-3. Once the test run is complete, you can view the report at `coverage/index.html`.
-
-## 3rd Party Authentication Providers
-
-Support for 3rd party authentication is available in the application to demonstrate the concepts on logging in with a 3rd party provider.
-
-The app contains different entry points for each provider. There is a separate **index** file for each provider, and to use one, you must replace the current **index.tsx** file with the desired one. The following providers are supported:
-
-- [Auth0](#auth0) (index.auth0.tsx)
-- [Okta](#okta) (index.okta.tsx)
-- [Amazon Cognito](#amazon-cognito) (index.cognito.tsx)
-- [Google](#google) (index.google.tsx)
-
-### Auth0
-
-The [Auth0](https://auth0.com/) tests have been rewritten to take advantage of our [`cy.session`](https://docs.cypress.io/api/commands/session) and [`cy.origin`](https://docs.cypress.io/api/commands/origin) commands.
-
-Prerequisites include an Auth0 account and a Tenant configured for use with a SPA. Environment variables from Auth0 are to be placed in the [.env](./.env). For more details see [Auth0 Application Setup](http://on.cypress.io/auth0#Auth0-Application-Setup) and [Setting Auth0 app credentials in Cypress](http://on.cypress.io/auth0#Setting-Auth0-app-credentials-in-Cypress).
-
-To start the application with Auth0, replace the current **src/index.tsx** file with the **src/index.auth0.tsx** file and start the application with `yarn dev:auth0` and run Cypress with `yarn cypress:open`.
-
-The only passing spec on this branch will be the [auth0 spec](./cypress/tests/ui-auth-providers/auth0.spec.ts); all others will fail. Please note that your test user will need to authorize your Auth0 app before the tests will pass.
-
-### Okta
-
-A [guide has been written with detail around adapting the RWA](http://on.cypress.io/okta) to use [Okta][okta] and to explain the programmatic command used for Cypress tests.
-
-Prerequisites include an [Okta][okta] account and [application configured for use with a SPA][oktacreateapp]. Environment variables from [Okta][okta] are to be placed in the [.env](./.env).
-
-To start the application with Okta, replace the current **src/index.tsx** file with the **src/index.okta.tsx** file and start the application with `yarn dev:okta` and run Cypress with `yarn cypress:open`.
-
-The **only passing spec on this branch** will be the [okta spec](./cypress/tests/ui-auth-providers/okta.spec.ts); all others will fail.
-
-### Amazon Cognito
-
-A [guide has been written with detail around adapting the RWA](http://on.cypress.io/amazon-cognito) to use [Amazon Cognito][cognito] as the authentication solution and to explain the programmatic command used for Cypress tests.
-
-Prerequisites include an [Amazon Cognito][cognito] account. Environment variables from [Amazon Cognito][cognito] are provided by the [AWS Amplify CLI][awsamplify].
-
-- A user pool is required (identity pool is not used here)
-  - The user pool must have a hosted UI domain configured, which must:
-    - allow callback and sign-out URLs of `http://localhost:3000/`,
-    - allow implicit grant Oauth grant type,
-    - allow these OpenID Connect scopes:
-      - aws.cognito.signin.user.admin
-      - email
-      - openid
-  - The user pool must have an app client configured, with:
-    - enabled auth flow `ALLOW_USER_PASSWORD_AUTH`, only for programmatic login flavor of test.
-    - The `cy.origin()` flavor of test only requires auth flow `ALLOW_USER_SRP_AUTH`, and does not require `ALLOW_USER_PASSWORD_AUTH`.
-  - The user pool must have a user corresponding to the `AWS_COGNITO` env vars mentioned below, and the user's Confirmation Status must be `Confirmed`. If it is `Force Reset Password`, then use a browser to log in once at `http://localhost:3000` while `yarn dev:cognito` is running to reset their password.
-
-The test knobs are in a few places:
-
-- The `.env` file has `VITE_AUTH_TOKEN_NAME` and vars beginning `AWS_COGNITO`. Be careful not to commit any secrets.
-- Both `scripts/mock-aws-exports.js` and `scripts/mock-aws-exports-es5.js` must have the same data; only their export statements differ. These files can be edited manually or exported from the amplify CLI.
-- `cypress.config.ts` has `cognito_programmatic_login` to control flavor of the test.
-
-To start the application with Cognito, replace the current **src/index.tsx** file with the **src/index.cognito.tsx** file and start the application with `yarn dev:cognito` and run Cypress with `yarn cypress:open`. `yarn dev` may need to have been run once first.
-
-The **only passing spec on this branch** will be the [cognito spec](./cypress/tests/ui-auth-providers/cognito.spec.ts); all others will fail.
-
-### Google
-
-A [guide has been written with detail around adapting the RWA](https://docs.cypress.io/guides/testing-strategies/google-authentication.html) to use [Google][google] as the authentication solution and to explain the programmatic command used for Cypress tests.
-
-Prerequisites include an [Google][google] account. Environment variables from [Google][google] are to be placed in the [.env](./.env).
-
-To start the application with Google, replace the current **src/index.tsx** file with the **src/index.google.tsx** file and start the application with `yarn dev:google` and run Cypress with `yarn cypress:open`.
-
-The **only passing spec** when run with `yarn dev:google` will be the [google spec](./cypress/tests/ui-auth-providers/google.spec.ts); all others will fail.
-
-## License
-
-[![license](https://img.shields.io/badge/license-MIT-green.svg)](https://github.com/cypress-io/cypress/blob/master/LICENSE)
-
-This project is licensed under the terms of the [MIT license](/LICENSE).
-
-[reactjs]: https://reactjs.org
-[xstate]: https://xstate.js.org
-[express]: https://expressjs.com
-[lowdb]: https://github.com/typicode/lowdb
-[typescript]: https://typescriptlang.org
-[cypresscloud]: https://cloud.cypress.io/projects/7s5okt/runs
-[material-ui]: https://material-ui.com
-[okta]: https://okta.com
-[auth0]: https://auth0.com
-[oktacreateapp]: https://developer.okta.com/docs/guides/sign-into-spa/react/create-okta-application/
-[cognito]: https://aws.amazon.com/cognito
-[awsamplify]: https://amplify.aws
-[google]: https://google.com
-
-## Contributors ✨
-
-Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
-
-<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
-<!-- prettier-ignore-start -->
-<!-- markdownlint-disable -->
-<table>
-  <tr>
-    <td align="center"><a href="http://www.kevinold.com"><img src="https://avatars0.githubusercontent.com/u/21967?v=4" width="100px;" alt=""/><br /><sub><b>Kevin Old</b></sub></a></td>
-    <td align="center"><a href="https://twitter.com/amirrustam"><img src="https://avatars0.githubusercontent.com/u/334337?v=4" width="100px;" alt=""/><br /><sub><b>Amir Rustamzadeh</b></sub></a></td>
-    <td align="center"><a href="https://twitter.com/be_mann"><img src="https://avatars2.githubusercontent.com/u/1268976?v=4" width="100px;" alt=""/><br /><sub><b>Brian Mann</b></sub></a></td>
-    <td align="center"><a href="https://glebbahmutov.com/"><img src="https://avatars1.githubusercontent.com/u/2212006?v=4" width="100px;" alt=""/><br /><sub><b>Gleb Bahmutov</b></sub></a></td>
-    <td align="center"><a href="http://www.bencodezen.io"><img src="https://avatars0.githubusercontent.com/u/4836334?v=4" width="100px;" alt=""/><br /><sub><b>Ben Hong</b></sub></a></td>
-    <td align="center"><a href="https://github.com/davidkpiano"><img src="https://avatars2.githubusercontent.com/u/1093738?v=4" width="100px;" alt=""/><br /><sub><b>David Khourshid</b></sub></a></td>
-  </tr>
-</table>
-
-<!-- markdownlint-enable -->
-<!-- prettier-ignore-end -->
-
-<!-- ALL-CONTRIBUTORS-LIST:END -->
-
-This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!!
+### **Resumen de lo que se hizo:**
+
+1. **Fork y clonación del repositorio**: Clonamos el repositorio de `cypress-io/cypress-realworld-app` a tu cuenta.
+2. **Instalación de dependencias**: Usamos `npm install --legacy-peer-deps` para instalar todas las dependencias necesarias para el proyecto.
+3. **Creación de Workflow CI/CD**: Se creó un archivo `ci.yml` para configurar GitHub Actions y se integró SonarCloud para el análisis del código.
+4. **Configuración de SonarCloud**: Configuramos un **token secreto** en GitHub para usarlo en el pipeline y autenticar el análisis de código en SonarCloud.
+5. **Implementación de Page Object**: Se creó el archivo `LoginPage.js` en **cypress/pages/** para encapsular las interacciones de la página de login.
+6. **Escritura de un test E2E**: Se escribió un test de flujo completo en **cypress/tests/ui/custom-flow.spec.ts** para validar el funcionamiento de la aplicación desde el inicio hasta el final.
+7. **Push y verificación**: Se hicieron los **commit y push** de los cambios al repositorio y se verificó la ejecución de los tests en **GitHub Actions**.
+
+Con estos pasos, configuraste con éxito un pipeline de **CI/CD** con pruebas **E2E** en **Cypress** y análisis de código estático en **SonarCloud**. ¡Felicidades por haber completado la implementación! Si necesitas ayuda con los entregables o cualquier otra cosa, no dudes en preguntarme.
