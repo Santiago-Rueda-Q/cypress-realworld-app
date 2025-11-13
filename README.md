@@ -1,3 +1,6 @@
+## Video 
+https://youtu.be/xPVpsluEFic
+
 ### Resumen de los Pasos Realizados en el Proyecto
 
 #### **Paso 1: Fork del Repositorio**
