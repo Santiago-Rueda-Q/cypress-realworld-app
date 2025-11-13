@@ -1,5 +1,8 @@
-## Video 
+# Video 
+### Youtube
 https://youtu.be/xPVpsluEFic
+### Drive
+https://drive.google.com/drive/folders/1AB7O4ztr0APAWTE8gb-quAN2UWq6TAND?hl=es
 
 ### Resumen de los Pasos Realizados en el Proyecto
 
